@@ -1,0 +1,70 @@
+        -:    0:Source:cardtest1.c
+        -:    0:Graph:cardtest1.gcno
+        -:    0:Data:cardtest1.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "dominion.h"
+        -:    2:#include "dominion_helpers.h"
+        -:    3:#include <stdio.h>
+        -:    4:#include <assert.h>
+        -:    5:#include <stdlib.h>
+        -:    6:#include <string.h>
+        -:    7:#include "rngs.h"
+        -:    8:
+        -:    9:#define NOISY_TEST 1
+        -:   10:
+        1:   11:int main(){
+        -:   12:	int i;
+        1:   13:    	int seed = 1000;
+        1:   14:    	int numPlayer = 2;
+        1:   15:    	int maxBonus = 10;
+        -:   16:    	int p, r, handCount;
+        1:   17:    	int bonus = 0;
+        1:   18:	int maxHandCount = 5;
+        1:   19:    	int k[10] = {adventurer, council_room, feast, gardens, mine
+        -:   20:               , remodel, smithy, village, baron, great_hall};
+        -:   21:    	struct gameState G, T;
+        -:   22:	//memset(&G, 0, sizeof(struct gameState));
+        1:   23:	initializeGame(numPlayer, k, seed, &G);
+        -:   24:	//memset(&G, 0, sizeof(struct gameState));
+        -:   25:
+        1:   26:	memcpy(&T, &G, sizeof(struct gameState));
+        -:   27:
+        1:   28:	printf("TESTING Smithy\n");
+        -:   29:
+        1:   30:	printf("Hand Before Smithy = %d\n", T.handCount[0]);
+        -:   31:
+        1:   32:	printf("Deck Before Smithy = %d\n", T.deckCount[0]);
+        -:   33:
+        1:   34:	cardEffect(smithy, 0, 0, 0, &T, 0, &bonus);
+        -:   35:
+        1:   36:	printf("Adding 7 cards\n");
+        -:   37:
+        1:   38:	printf("Cards in Hand : %d, Expected : %d\n", T.handCount[0], G.handCount[0] + 7 - 1);
+        -:   39:	
+        1:   40:	printf("Cards in the Deck : %d, Expected : %d\n", T.deckCount[0], G.deckCount[0] - 7);
+        -:   41:
+        1:   42:	if(T.handCount[0] == G.handCount[0] + 7 - 1)
+    #####:   43:		printf("Hand Count : Success\n");
+        -:   44:	else
+        1:   45:		printf("Hand Count : Failure\n");
+        -:   46:
+        1:   47:	if(T.deckCount[0] == G.deckCount[0] + 7)
+    #####:   48:                printf("Deck Count : Success\n");
+        -:   49:        else
+        1:   50:                printf("Deck Count : Failure\n");
+        -:   51:	
+        1:   52:	 printf("Testing Player 2\n");
+        1:   53:         if (T.handCount[1] == G.handCount[1])
+        -:   54:         {
+        1:   55:                 if (T.deckCount[1] == G.deckCount[1])
+        1:   56:                         printf("Success : Player 2 Unaffected\n");
+        -:   57:         }
+        -:   58:
+        -:   59:         else
+    #####:   60:                 printf("Failure : Player 2 has been affected\n");
+        -:   61:
+        -:   62:
+        1:   63:	return 0;
+        -:   64:
+        -:   65:}

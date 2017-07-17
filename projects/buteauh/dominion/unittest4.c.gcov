@@ -1,0 +1,67 @@
+        -:    0:Source:unittest4.c
+        -:    0:Graph:unittest4.gcno
+        -:    0:Data:unittest4.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "dominion.h"
+        -:    2:#include "dominion_helpers.h"
+        -:    3:#include <stdio.h>
+        -:    4:#include <assert.h>
+        -:    5:#include <stdlib.h>
+        -:    6:#include <string.h>
+        -:    7:#include "rngs.h"
+        -:    8:
+        -:    9:// set NOISY_TEST to 0 to remove printfs from output
+        -:   10:#define NOISY_TEST 1
+        1:   11:int main() {
+        -:   12:	int i;
+        1:   13:	int seed = 1000;
+        1:   14:	int numPlayer = 2;
+        1:   15:	int maxBonus = 10;
+        -:   16:	int p, r, handCount;
+        1:   17:	int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
+        -:   18:	int cardCount;
+        -:   19:	struct gameState G, T;
+        1:   20:	initializeGame(numPlayer, k, seed, &G);
+        -:   21:	
+        1:   22:	memcpy(&T, &G, sizeof(struct gameState));
+        1:   23:	printf("TESTING : fullDeckCount\n");
+        1:   24:	T.deckCount[0] = 0;
+        1:   25:	T.handCount[0] = 0;
+        1:   26:	T.discardCount[0] = 0;
+        1:   27:	cardCount = fullDeckCount(0, adventurer, &T);
+        1:   28:	printf("Testing with all decks empty\n");
+        1:   29:	printf("Full Deck = %d, expected = %d\n", cardCount, 0);
+        1:   30:	if(cardCount == 0)
+        1:   31:		printf("Success\n");
+        -:   32:	else
+    #####:   33:		printf("Failure\n");
+        -:   34:
+        1:   35:	memcpy(&T, &G, sizeof(struct gameState));
+        1:   36:	T.deckCount[0] = 1;
+        1:   37:        T.handCount[0] = 5;
+        1:   38:        T.discardCount[0] = 3;
+        1:   39:	T.deck[0][0] = copper;
+        1:   40:	T.hand[0][0] = gold;
+        1:   41:	T.hand[0][1] = gold;
+        1:   42:	T.hand[0][2] = silver;
+        1:   43:	T.hand[0][3] = copper;
+        1:   44:	T.hand[0][4] = mine;
+        1:   45:	T.discard[0][0] = silver;
+        1:   46:	T.discard[0][1] = copper;
+        1:   47:	T.discard[0][2] = copper; 
+        1:   48:	cardCount = fullDeckCount(0, copper, &T);
+        1:   49:	printf("Testing : Looking For Copper\n");
+        1:   50:	printf("In Discard : 2 Copper. In Deck : 1 Copper. In Hand : 1 Copper\n");
+        1:   51:	printf("Full Deck = %d, expected = %d\n", cardCount, 4);
+        -:   52:	
+        1:   53:	if(cardCount == 4)
+        1:   54:                  printf("Success\n");
+        -:   55:        else
+    #####:   56:                  printf("Failure\n");
+        -:   57:	
+        -:   58:
+        1:   59:	return 0;
+        -:   60:}	
+        -:   61:		
+        -:   62:	

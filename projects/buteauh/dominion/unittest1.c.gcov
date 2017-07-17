@@ -1,0 +1,391 @@
+        -:    0:Source:unittest1.c
+        -:    0:Graph:unittest1.gcno
+        -:    0:Data:unittest1.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/********************************************************************
+        -:    2: * Testing getCost
+        -:    3: * testGetCost: unittest1.c dominion.o rngs.o
+        -:    4: * gcc -o unit1test -g  unittest1.c dominion.o rngs.o $(CFLAGS)
+        -:    5: *****************************************************************/
+        -:    6:
+        -:    7:#include "dominion.h"
+        -:    8:#include "dominion_helpers.h"
+        -:    9:#include <string.h>
+        -:   10:#include <stdio.h>
+        -:   11:#include <assert.h>
+        -:   12:#include "rngs.h"
+        -:   13:
+        -:   14://with help from testUpdateCoints.c
+        -:   15://set NOISY_TEST to 0 to remove printfs from output
+        -:   16:#define NOISY_TEST 1
+        -:   17:
+        -:   18:
+        1:   19:int main()
+        -:   20:{
+        -:   21:	int cardValue;
+        1:   22:	printf ("TESTING : getCost\n");
+        1:   23:	cardValue = getCost(curse);
+        -:   24:
+        -:   25:	#if (NOISY_TEST == 1)
+        1:   26:		printf ("Testing Curse\n");
+        1:   27:		printf ("Card Value : %d True Value : 0\n", cardValue);
+        -:   28:	
+        1:   29:		if (cardValue == 0)
+        1:   30:			printf ("Pass\n");
+        -:   31:		else 
+    #####:   32:			printf ("Fail\n");
+        -:   33:
+        -:   34:	#endif
+        -:   35:
+        -:   36:
+        1:   37:	cardValue = getCost(estate);
+        -:   38: 
+        -:   39:        #if (NOISY_TEST == 1)
+        1:   40:               printf ("Testing Estate\n");
+        1:   41:               printf ("Card Value : %d True Value : 2\n", cardValue);
+        -:   42: 
+        1:   43:               if (cardValue == 2)
+        1:   44:                       printf ("Pass\n");
+        -:   45:               else
+    #####:   46:                       printf ("Fail\n");
+        -:   47:        #endif
+        -:   48:
+        -:   49:	
+        1:   50:	cardValue = getCost(duchy);
+        -:   51: 
+        -:   52:        #if (NOISY_TEST == 1)
+        1:   53:                printf ("Testing Duchy\n");
+        1:   54:                printf ("Card Value : %d True Value : 5\n", cardValue);
+        -:   55: 
+        1:   56:                if (cardValue == 5)
+        1:   57:                        printf ("Pass\n");
+        -:   58:                else
+    #####:   59:                        printf ("Fail\n");
+        -:   60: 
+        -:   61:       #endif
+        -:   62:
+        -:   63:
+        1:   64:	 cardValue = getCost(province);
+        -:   65: 
+        -:   66:         #if (NOISY_TEST == 1)
+        1:   67:                printf ("Testing Province\n");
+        1:   68:                printf ("Card Value : %d True Value : 8\n", cardValue);
+        -:   69: 
+        1:   70:                if (cardValue == 8)
+        1:   71:                        printf ("Pass\n");
+        -:   72:                else
+    #####:   73:                        printf ("Fail\n");
+        -:   74: 
+        -:   75:        #endif
+        -:   76:	
+        -:   77:	
+        1:   78:	cardValue = getCost(copper);
+        -:   79: 
+        -:   80:        #if (NOISY_TEST == 1)
+        1:   81:                printf ("Testing Copper\n");
+        1:   82:                printf ("Card Value : %d True Value : 0\n", cardValue);
+        -:   83: 
+        1:   84:                if (cardValue == 0)
+        1:   85:                        printf ("Pass\n");
+        -:   86:                else
+    #####:   87:                        printf ("Fail\n");
+        -:   88: 
+        -:   89:       #endif
+        -:   90:
+        -:   91:	
+        1:   92:	 cardValue = getCost(silver);
+        -:   93: 
+        -:   94:         #if (NOISY_TEST == 1)
+        1:   95:                printf ("Testing Silver\n");
+        1:   96:                printf ("Card Value : %d True Value : 3\n", cardValue);
+        -:   97: 
+        1:   98:                if (cardValue == 3)
+        1:   99:                        printf ("Pass\n");
+        -:  100:                else
+    #####:  101:                         printf ("Fail\n");
+        -:  102: 
+        -:  103:        #endif
+        -:  104:
+        -:  105:
+        1:  106:	 cardValue = getCost(gold);
+        -:  107:         #if (NOISY_TEST == 1)
+        1:  108:                printf ("Testing Gold\n");
+        1:  109:                printf ("Card Value : %d True Value : 6\n", cardValue);
+        -:  110: 
+        1:  111:                if (cardValue == 6)
+        1:  112:                        printf ("Pass\n");
+        -:  113:                else
+    #####:  114:                        printf ("Fail\n");
+        -:  115: 
+        -:  116:       #endif
+        -:  117:
+        -:  118:	
+        1:  119:	 cardValue = getCost(adventurer);
+        -:  120: 
+        -:  121:        #if (NOISY_TEST == 1)
+        1:  122:               printf ("Testing Adventurer\n");
+        1:  123:               printf ("Card Value : %d True Value : 6\n", cardValue);
+        -:  124: 
+        1:  125:               if (cardValue == 6)
+        1:  126:                       printf ("Pass\n");
+        -:  127:               else
+    #####:  128:                       printf ("Fail\n");
+        -:  129: 
+        -:  130:       #endif
+        -:  131:
+        -:  132:
+        1:  133:	cardValue = getCost(council_room);
+        -:  134: 
+        -:  135:        #if (NOISY_TEST == 1)
+        1:  136:                printf ("Testing Council Room\n");
+        1:  137:                printf ("Card Value : %d True Value : 5\n", cardValue);
+        -:  138: 
+        1:  139:                if (cardValue == 5)
+        1:  140:                        printf ("Pass\n");
+        -:  141:                else
+    #####:  142:                        printf ("Fail\n");
+        -:  143: 
+        -:  144:       #endif
+        -:  145:
+        -:  146:
+        1:  147:	 cardValue = getCost(feast);
+        -:  148: 
+        -:  149:         #if (NOISY_TEST == 1)
+        1:  150:                 printf ("Testing Feast\n");
+        1:  151:                 printf ("Card Value : %d True Value : 4\n", cardValue);
+        -:  152: 
+        1:  153:                 if (cardValue == 4)
+        1:  154:                         printf ("Pass\n");
+        -:  155:                 else
+    #####:  156:                         printf ("Fail\n");
+        -:  157: 
+        -:  158:        #endif
+        -:  159:
+        -:  160:
+        1:  161:	cardValue = getCost(gardens);
+        -:  162: 
+        -:  163:        #if (NOISY_TEST == 1)
+        1:  164:                printf ("Testing Gardens\n");
+        1:  165:                printf ("Card Value : %d True Value : 4\n", cardValue);
+        -:  166: 
+        1:  167:                if (cardValue == 4)
+        1:  168:                        printf ("Pass\n");
+        -:  169:                else
+    #####:  170:                        printf ("Fail\n");
+        -:  171: 
+        -:  172:       #endif
+        -:  173:
+        -:  174:
+        1:  175:	cardValue = getCost(mine);
+        -:  176: 
+        -:  177:        #if (NOISY_TEST == 1)
+        1:  178:                printf ("Testing Mine\n");
+        1:  179:                printf ("Card Value : %d True Value : 5\n", cardValue);
+        -:  180: 
+        1:  181:                if (cardValue == 5)
+        1:  182:                        printf ("Pass\n");
+        -:  183:                else
+    #####:  184:                        printf ("Fail\n");
+        -:  185: 
+        -:  186:       #endif
+        -:  187:
+        -:  188:
+        1:  189:	cardValue = getCost(remodel);
+        -:  190: 
+        -:  191:        #if (NOISY_TEST == 1)
+        1:  192:                printf ("Testing Remodel\n");
+        1:  193:                printf ("Card Value : %d True Value : 4\n", cardValue);
+        -:  194: 
+        1:  195:                if (cardValue == 4)
+        1:  196:                        printf ("Pass\n");
+        -:  197:                else
+    #####:  198:                        printf ("Fail\n");
+        -:  199: 
+        -:  200:       #endif
+        -:  201:
+        1:  202:	cardValue = getCost(smithy);
+        -:  203: 
+        -:  204:        #if (NOISY_TEST == 1)
+        1:  205:                printf ("Testing Smithy\n");
+        1:  206:                printf ("Card Value : %d True Value : 4\n", cardValue);
+        -:  207: 
+        1:  208:               if (cardValue == 4)
+        1:  209:                        printf ("Pass\n");
+        -:  210:                else
+    #####:  211:                        printf ("Fail\n");
+        -:  212: 
+        -:  213:       #endif
+        -:  214:
+        1:  215:	cardValue = getCost(village);
+        -:  216:        
+        -:  217:	#if (NOISY_TEST == 1)
+        1:  218:                printf ("Testing Village\n");
+        1:  219:                printf ("Card Value : %d True Value : 3\n", cardValue);
+        -:  220: 
+        1:  221:                if (cardValue == 3)
+        1:  222:                        printf ("Pass\n");
+        -:  223:                else
+    #####:  224:                        printf ("Fail\n");
+        -:  225:       #endif
+        -:  226:
+        1:  227:	 cardValue = getCost(baron);
+        -:  228: 
+        -:  229:        #if (NOISY_TEST == 1)
+        1:  230:                printf ("Testing Baron\n");
+        1:  231:                printf ("Card Value : %d True Value : 4\n", cardValue);
+        -:  232: 
+        1:  233:                if (cardValue == 4)
+        1:  234:                        printf ("Pass\n");
+        -:  235:                else
+    #####:  236:                        printf ("Fail\n");
+        -:  237: 
+        -:  238:       #endif
+        -:  239:
+        1:  240:	 cardValue = getCost(great_hall);
+        -:  241: 
+        -:  242:        #if (NOISY_TEST == 1)
+        1:  243:                printf ("Testing Great Hall\n");
+        1:  244:                printf ("Card Value : %d True Value : 3\n", cardValue);
+        -:  245: 
+        1:  246:               if (cardValue == 3)
+        1:  247:                        printf ("Pass\n");
+        -:  248:                else
+    #####:  249:                        printf ("Fail\n");
+        -:  250: 
+        -:  251:       #endif
+        -:  252:
+        1:  253:	cardValue = getCost(minion);
+        -:  254: 
+        -:  255:        #if (NOISY_TEST == 1)
+        1:  256:                printf ("Testing Minion\n");
+        1:  257:                printf ("Card Value : %d True Value : 5\n", cardValue);
+        -:  258: 
+        1:  259:                if (cardValue == 5)
+        1:  260:                        printf ("Pass\n");
+        -:  261:                else
+    #####:  262:                        printf ("Fail\n");
+        -:  263: 
+        -:  264:       #endif
+        -:  265:
+        -:  266:
+        1:  267:	 cardValue = getCost(steward);
+        -:  268: 
+        -:  269:        #if (NOISY_TEST == 1)
+        1:  270:                printf ("Testing Steward\n");
+        1:  271:                printf ("Card Value : %d True Value : 3\n", cardValue);
+        -:  272: 
+        1:  273:                if (cardValue == 3)
+        1:  274:                        printf ("Pass\n");
+        -:  275:                else
+    #####:  276:                        printf ("Fail\n");
+        -:  277: 
+        -:  278:       #endif
+        -:  279:
+        1:  280:	 cardValue = getCost(tribute);
+        -:  281:         #if (NOISY_TEST == 1)
+        1:  282:                printf ("Testing Tribute\n");
+        1:  283:                printf ("Card Value : %d True Value : 5\n", cardValue);
+        -:  284: 
+        1:  285:                if (cardValue == 5)
+        1:  286:                        printf ("Pass\n");
+        -:  287:                else
+    #####:  288:                        printf ("Fail\n");
+        -:  289: 
+        -:  290:       #endif
+        -:  291:
+        1:  292:	 cardValue = getCost(ambassador);
+        -:  293: 
+        -:  294:        #if (NOISY_TEST == 1)
+        1:  295:                printf ("Testing Ambassador\n");
+        1:  296:                printf ("Card Value : %d True Value : 3\n", cardValue);
+        -:  297: 
+        1:  298:                if (cardValue == 3)
+        1:  299:                        printf ("Pass\n");
+        -:  300:                else
+    #####:  301:                        printf ("Fail\n");
+        -:  302: 
+        -:  303:       #endif
+        -:  304:
+        1:  305:	 cardValue = getCost(cutpurse);
+        -:  306: 
+        -:  307:        #if (NOISY_TEST == 1)
+        1:  308:                printf ("Testing CutPurse\n");
+        1:  309:                printf ("Card Value : %d True Value : 4\n", cardValue);
+        -:  310: 
+        1:  311:                if (cardValue == 4)
+        1:  312:                        printf ("Pass\n");
+        -:  313:                else
+    #####:  314:                        printf ("Fail\n");
+        -:  315: 
+        -:  316:       #endif
+        -:  317:
+        1:  318:	 cardValue = getCost(embargo);
+        -:  319: 
+        -:  320:        #if (NOISY_TEST == 1)
+        1:  321:                printf ("Testing Embargo\n");
+        1:  322:                printf ("Card Value : %d True Value : 2\n", cardValue);
+        -:  323: 
+        1:  324:                if (cardValue == 2)
+        1:  325:                       printf ("Pass\n");
+        -:  326:                else
+    #####:  327:                        printf ("Fail\n");
+        -:  328: 
+        -:  329:       #endif
+        -:  330:
+        -:  331:
+        1:  332:	 cardValue = getCost(outpost);
+        -:  333: 
+        -:  334:        #if (NOISY_TEST == 1)
+        1:  335:                printf ("Testing Outpost\n");
+        1:  336:                printf ("Card Value : %d True Value : 5\n", cardValue);
+        -:  337: 
+        1:  338:                if (cardValue == 5)
+        1:  339:                        printf ("Pass\n");
+        -:  340:                else
+    #####:  341:                        printf ("Fail\n");
+        -:  342: 
+        -:  343:       #endif
+        -:  344:
+        1:  345:	 cardValue = getCost(salvager);
+        -:  346:         #if (NOISY_TEST == 1)
+        1:  347:                printf ("Testing Salvager\n");
+        1:  348:                printf ("Card Value : %d True Value : 4\n", cardValue);
+        -:  349: 
+        1:  350:                if (cardValue == 4)
+        1:  351:                        printf ("Pass\n");
+        -:  352:                else
+    #####:  353:                        printf ("Fail\n");
+        -:  354: 
+        -:  355:       #endif
+        -:  356:
+        1:  357:	 cardValue = getCost(sea_hag);
+        -:  358: 
+        -:  359:        #if (NOISY_TEST == 1)
+        1:  360:                printf ("Testing Sea Hag\n");
+        1:  361:                printf ("Card Value : %d True Value : 4\n", cardValue);
+        -:  362: 
+        1:  363:                if (cardValue == 4)
+        1:  364:                        printf ("Pass\n");
+        -:  365:                else
+    #####:  366:                        printf ("Fail\n");
+        -:  367: 
+        -:  368:       #endif
+        -:  369:
+        1:  370:	 cardValue = getCost(treasure_map);
+        -:  371: 
+        -:  372:        #if (NOISY_TEST == 1)
+        1:  373:                printf ("Testing Treasure Map\n");
+        1:  374:                printf ("Card Value : %d True Value : 4\n", cardValue);
+        -:  375: 
+        1:  376:                if (cardValue == 4)
+        1:  377:                        printf ("Pass\n");
+        -:  378:                else
+    #####:  379:                        printf ("Fail\n");
+        -:  380: 
+        -:  381:       #endif
+        -:  382:
+        1:  383:	printf ("Tests Finished\n");
+        -:  384:
+        1:  385:	return 0;
+        -:  386:}

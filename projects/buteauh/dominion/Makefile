@@ -15,6 +15,30 @@ testDrawCard: testDrawCard.c dominion.o rngs.o
 badTestDrawCard: badTestDrawCard.c dominion.o rngs.o
 	gcc -o badTestDrawCard -g  badTestDrawCard.c dominion.o rngs.o $(CFLAGS)
 
+testGetCost: unittest1.c dominion.o rngs.o
+	gcc -o unit1test -g  unittest1.c dominion.o rngs.o $(CFLAGS)
+
+testUpdateCoin: unittest2.c dominion.o rngs.o
+	gcc -o unit2test -g  unittest2.c dominion.o rngs.o $(CFLAGS)
+
+testIsGameOver: unittest3.c dominion.o rngs.o
+	gcc -o unit3test -g  unittest3.c dominion.o rngs.o $(CFLAGS)
+
+testFullDeckCount: unittest4.c dominion.o rngs.o
+	gcc -o unit4test -g  unittest4.c dominion.o rngs.o $(CFLAGS)
+
+testSmithy: cardtest1.c dominion.o rngs.o
+	gcc -o cardtest1 -g  cardtest1.c dominion.o rngs.o $(CFLAGS)
+
+testAdventurer: cardtest2.c dominion.o rngs.o
+	gcc -o cardtest2 -g  cardtest2.c dominion.o rngs.o $(CFLAGS) 
+
+testVillage: cardtest3.c dominion.o rngs.o
+	gcc -o cardtest3 -g  cardtest3.c dominion.o rngs.o $(CFLAGS)
+
+testGreatHall: cardtest4.c dominion.o rngs.o
+	gcc -o cardtest4 -g  cardtest4.c dominion.o rngs.o $(CFLAGS)
+
 testBuyCard: testDrawCard.c dominion.o rngs.o
 	gcc -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
 
@@ -23,6 +47,18 @@ testAll: dominion.o testSuite.c
 
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
+
+unittestresults.out: testGetCost testUpdateCoin testIsGameOver testFullDeckCount testSmithy testAdventurer testVillage testGreatHall dominion.c
+	./unit1test >> unittestresults.out
+	./unit2test >> unittestresults.out
+	./unit3test >> unittestresults.out
+	./unit4test >> unittestresults.out
+	./cardtest1 >> unittestresults.out
+	./cardtest2 >> unittestresults.out
+	./cardtest3 >> unittestresults.out
+	./cardtest4 >> unittestresults.out
+	gcov dominion.c -b >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
 runtests: testDrawCard 
 	./testDrawCard &> unittestresult.out
@@ -33,7 +69,7 @@ runtests: testDrawCard
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player testDrawCard testBuyCard badTestDrawCard
+all: playdom player testDrawCard testBuyCard badTestDrawCard testGetCost testUpdateCoin testIsGameOver testFullDeckCount testSmithy testAdventurer testVillage testGreatHall
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
