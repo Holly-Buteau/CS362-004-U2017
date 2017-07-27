@@ -42,13 +42,21 @@ testGreatHall: cardtest4.c dominion.o rngs.o
 testBuyCard: testDrawCard.c dominion.o rngs.o
 	gcc -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
 
+testRan1: randomtestadventurer.c dominion.o rngs.o
+	gcc -o randomtestadventurer -g randomtestadventurer.c dominion.o rngs.o $(CFLAGS)  
+
+testRan2: randomtestcard1.c dominion.o rngs.o
+	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o $(CFLAGS)
+
+testRan3: randomtestcard2.c dominion.o rngs.o
+	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
 testAll: dominion.o testSuite.c
 	gcc -o testSuite testSuite.c -g  dominion.o rngs.o $(CFLAGS)
 
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
 
-unittestresults.out: testGetCost testUpdateCoin testIsGameOver testFullDeckCount testSmithy testAdventurer testVillage testGreatHall dominion.c
+unittestresults.out: testGetCost testUpdateCoin testIsGameOver testFullDeckCount testSmithy testAdventurer testVillage testGreatHall testRan1 dominion.c testRan2
 	./unit1test >> unittestresults.out
 	./unit2test >> unittestresults.out
 	./unit3test >> unittestresults.out
@@ -57,6 +65,9 @@ unittestresults.out: testGetCost testUpdateCoin testIsGameOver testFullDeckCount
 	./cardtest2 >> unittestresults.out
 	./cardtest3 >> unittestresults.out
 	./cardtest4 >> unittestresults.out
+	./randomtestadventurer >> unittestresults.out 
+	./randomtestcard1 >> unittestresults.out 
+	./randomtestcard2 >> unittestresults.out 
 	gcov dominion.c -b >> unittestresults.out
 	cat dominion.c.gcov >> unittestresults.out
 
@@ -69,7 +80,7 @@ runtests: testDrawCard
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player testDrawCard testBuyCard badTestDrawCard testGetCost testUpdateCoin testIsGameOver testFullDeckCount testSmithy testAdventurer testVillage testGreatHall
+all: playdom player testDrawCard testBuyCard badTestDrawCard testGetCost testUpdateCoin testIsGameOver testFullDeckCount testSmithy testAdventurer testVillage testGreatHall testRan1 testRan2 testRan3 unittestresults.out
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
