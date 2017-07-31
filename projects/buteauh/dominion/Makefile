@@ -56,20 +56,22 @@ testAll: dominion.o testSuite.c
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
 
-unittestresults.out: testGetCost testUpdateCoin testIsGameOver testFullDeckCount testSmithy testAdventurer testVillage testGreatHall testRan1 dominion.c testRan2
-	./unit1test >> unittestresults.out
-	./unit2test >> unittestresults.out
-	./unit3test >> unittestresults.out
-	./unit4test >> unittestresults.out
-	./cardtest1 >> unittestresults.out
-	./cardtest2 >> unittestresults.out
-	./cardtest3 >> unittestresults.out
-	./cardtest4 >> unittestresults.out
-	./randomtestadventurer >> unittestresults.out 
-	./randomtestcard1 >> unittestresults.out 
-	./randomtestcard2 >> unittestresults.out 
-	gcov dominion.c -b >> unittestresults.out
-	cat dominion.c.gcov >> unittestresults.out
+
+randomtestadventurer.out: testRan1 dominion.c
+	./randomtestadventurer >> randomtestadventurer.out
+	 gcov dominion.c -b >> randomtestadventurer.out
+	cat dominion.c.gcov >> randomtestadventurer.out	 
+
+randomtestcard1.out: testRan2 dominion.c
+	./randomtestcard1 >> randomtestcard1.out
+	gcov dominion.c -b >> randomtestcard1.out
+	cat dominion.c.gcov >> randomtestcard1.out
+
+
+randomtestcard2.out: testRan3 dominion.c
+	./randomtestcard2 >> randomtestcard2.out
+	gcov dominion.c -b >> randomtestcard2.out
+	cat dominion.c.gcov >> randomtestcard2.out
 
 runtests: testDrawCard 
 	./testDrawCard &> unittestresult.out
@@ -80,7 +82,7 @@ runtests: testDrawCard
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player testDrawCard testBuyCard badTestDrawCard testGetCost testUpdateCoin testIsGameOver testFullDeckCount testSmithy testAdventurer testVillage testGreatHall testRan1 testRan2 testRan3 unittestresults.out
+all: playdom player testDrawCard testBuyCard badTestDrawCard testGetCost testUpdateCoin testIsGameOver testFullDeckCount testRan1 testRan2 testRan3 randomtestcard1.out randomtestcard2.out randomtestadventurer.out
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe

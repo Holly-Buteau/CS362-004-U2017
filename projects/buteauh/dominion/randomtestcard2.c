@@ -121,7 +121,7 @@ int main()
 
 	srand(time(NULL));
 
-	printf("Testing : Adventurer\n");
+	printf("Testing : Great Hall\n");
 
 	for (i = 0; i < loop; i++)
 	{

@@ -32,24 +32,14 @@ struct gameState prepGame(int numPlayer)
 		for(y = 0; y < prepGame.handCount[y]; y++)
 		{
 			card = (int)(rand () % 3);
-			coin = (int)(rand () % 3);
+		
 			
 			if (card == 0)
 				prepGame.hand[x][y] = k[rand() % 10];	
 
 			else
-			{
-				if (coin == 0)
-	                                 prepGame.deck[x][y] = copper;					
-				if (coin == 1)
-                                         prepGame.deck[x][y] = silver;
-				if (coin == 2)
-                                        prepGame.deck[x][y] = gold;
-			}
-
-					
-	
-                              
+	                        prepGame.deck[x][y] = copper;					
+	                      
 			
  		}
 
@@ -158,7 +148,9 @@ int main()
 			error++;	
 		}
 
-		printf("Adventure Card Test Complete\n");
+		else	
+			printf("Adventure Card Test Complete\n");
+
 		printf("There were %d errors found\n", error);
 		
 		 

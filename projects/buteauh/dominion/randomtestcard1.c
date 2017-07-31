@@ -120,7 +120,7 @@ int main()
 
 	srand(time(NULL));
 
-	printf("Testing : Adventurer\n");
+	printf("Testing : Village\n");
 
 	for (i = 0; i < loop; i++)
 	{
