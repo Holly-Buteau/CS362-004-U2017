@@ -1,0 +1,20 @@
+Holly Buteau
+Assignment 5
+Bug Reporting for David Marini
+
+Bug-Reports: I found several bugs in my teammate’s code. I have detailed them below by card test.
+
+Adventurer: Adventurer was the first card I started with and was the most challenging. The adventurer card my teammate refactored causes the program to core dump. 
+This doesn’t happen immediately. My unit test passes, but my random test doesn’t. This is because my random test calls adventurer 10,000 times. 
+Around the 300 time, the game core dumps and adventurer fails. I couldn’t determine what was the cause, but a series of print test statements 
+determined that the code failed on line 18, with the if statement “if (state->deckCount[currentPlayer] <1)”. Other than this issue, the card function 
+also failed before the core dump. The treasure count is never incremented to trigger the test to determine if the player gained two extra treasure. 
+Interestingly, I have print statements testing the treasure count, and every time the function declares that the treasure count is incremented, I printed out a 
+statement saying that draw treasure was incremented and how much it was currently. But the treasure count as part of the game state is never increased.
+
+Smithy: This card function fails for the handCount. The handCount is increased by 4 instead of 3. 
+
+Great Hall: This card function fails for the numActions. The card is supposed to give you an extra action, however my teammate’s 
+function never increments the numActions, and the numActions remains exactly the same. There is one test that the card function passes; 
+the card function does draw another card into the player’s hand. 
+
