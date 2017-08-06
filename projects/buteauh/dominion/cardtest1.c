@@ -33,18 +33,18 @@ int main(){
 
 	cardEffect(smithy, 0, 0, 0, &T, 0, &bonus);
 
-	printf("Adding 7 cards\n");
+	printf("Adding 3 cards\n");
 
-	printf("Cards in Hand : %d, Expected : %d\n", T.handCount[0], G.handCount[0] + 7 - 1);
+	printf("Cards in Hand : %d, Expected : %d\n", T.handCount[0], G.handCount[0] + 2);
 	
-	printf("Cards in the Deck : %d, Expected : %d\n", T.deckCount[0], G.deckCount[0] - 7);
+	printf("Cards in the Deck : %d, Expected : %d\n", T.deckCount[0], G.deckCount[0] - 3);
 
-	if(T.handCount[0] == G.handCount[0] + 7 - 1)
+	if(T.handCount[0] == G.handCount[0] + 2)
 		printf("Hand Count : Success\n");
 	else
 		printf("Hand Count : Failure\n");
 
-	if(T.deckCount[0] == G.deckCount[0] + 7)
+	if(T.deckCount[0] == G.deckCount[0]- 3)
                 printf("Deck Count : Success\n");
         else
                 printf("Deck Count : Failure\n");

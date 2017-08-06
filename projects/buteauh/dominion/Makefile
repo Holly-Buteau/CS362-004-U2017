@@ -82,7 +82,7 @@ runtests: testDrawCard
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player testDrawCard testBuyCard badTestDrawCard testGetCost testUpdateCoin testIsGameOver testFullDeckCount testRan1 testRan2 testRan3 randomtestcard1.out randomtestcard2.out randomtestadventurer.out
+all: playdom player testDrawCard testBuyCard badTestDrawCard testGetCost testUpdateCoin testIsGameOver testFullDeckCount testRan1 testRan2 testRan3 randomtestcard1.out randomtestcard2.out randomtestadventurer.out testSmithy
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
